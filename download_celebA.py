@@ -93,7 +93,7 @@ def download_celabA(dataset_dir):
         '37af560349c7d2e51fcc4461168452c743c9cb96')
 
     _ALIGNED_IMGS_URL = (
-        'https://www.dropbox.com/sh/8oqt9vytwxb3s4r/AADIKlz8PR9zr6Y20qbkunrba/Img/img_align_celeba.zip?dl=1',
+        'https://drive.google.com/drive/folders/0B7EVK8r0v71pTUZsaXdaSnZBZzg',
         'b7e1990e1f046969bd4e49c6d804b93cd9be1646')
 
     _PARTITIONS_URL = (
@@ -112,18 +112,22 @@ def download_celabA(dataset_dir):
     img_dir_align = os.path.join(dataset_dir, 'Img', 'img_align_celeba')
     img_dir = os.path.join(dataset_dir, 'Img', 'img_celeba')
 
-    # url, sha1 = _ALIGNED_IMGS_URL
-    # print('Downloading {}'.format(url))
-    # filepath = download(url, dataset_dir)
-    # print('Done!')
-    # print('Check SHA1 {}'.format(filepath))
-    # if sha1 != checksum(filepath, 'sha1'):
-    #     raise RuntimeError('Checksum mismatch for %s.' % url)
+    import download_celebA_HQ
 
-    # print('Extract archive {}'.format(filepath))
-    # archive_extract(filepath, os.path.join(dataset_dir, 'Img'))
-    # print('Done!')
-    #os.remove(filepath)
+    url, sha1 = _ALIGNED_IMGS_URL
+    print('Downloading {}'.format(url))
+    save_path = os.path.join(dataset_dir, 'img_align_celeba.zip')
+    download_celebA_HQ.download_file_from_google_drive('0B7EVK8r0v71pTUZsaXdaSnZBZzg', save_path)
+    filepath = download(url, dataset_dir)
+    print('Done!')
+    print('Check SHA1 {}'.format(filepath))
+    if sha1 != checksum(filepath, 'sha1'):
+        raise RuntimeError('Checksum mismatch for %s.' % url)
+
+    print('Extract archive {}'.format(filepath))
+    archive_extract(filepath, os.path.join(dataset_dir, 'Img'))
+    print('Done!')
+    os.remove(filepath)
 
     n_imgsd = sum([1 for file in os.listdir(img_dir_align) if file[-4:] == '.jpg'])
     assert (n_imgsd == n_imgs)
@@ -167,7 +171,7 @@ def download_celabA(dataset_dir):
             os.remove(filepath)
         except:
             print('Something is fishy')
-        import download_celebA_HQ
+
         print('2nd try Downloading {}'.format('img_celeba.7z'))
 
         filenames = [
