@@ -1,7 +1,7 @@
 # download-celebA-HQ
 Python script to download and create the celebA-HQ dataset.
 
-To get the celebA-HQ dataset, you need to 
+To get the celebA-HQ dataset, you need to
  a) download the celebA dataset `download_celebA.py` ,
  b) download some extra files `download_celebA_HQ.py`,
  c) do some processing to get the HQ images `make_HQ_images.py`.
@@ -29,8 +29,8 @@ cd download-celebA-HQ
     ```
  * Install the packages
  ```
- conda install jpeg tqdm requests pillow urllib3 numpy cryptography scipy
- pip install opencv-python==3.4.2.17 cryptography==2.1.4
+ conda install jpeg=8d tqdm requests  urllib3 numpy cryptography scipy
+ pip install opencv-python==3.4.2.17 cryptography==2.1.4 pillow==3.1.1
  ```
 * Install 7zip (On Ubuntu)
  ```
