@@ -21,12 +21,18 @@ cd download-celebA-HQ
  conda create -n celebaHQ python=3
  source activate celebaHQ
  ```
+    * if you use pyenv, may need to follow up below:
+    ```sh
+    pyenv install miniconda3-3.7.0
+    conda creat -n celebaHQ python=3
+    pyenv activate miniconda3-3.7.0/envs/celebaHQ # or pyenv local miniconda3-3.7.0/envs/celebaHQ
+    ```
  * Install the packages
  ```
- conda install jpeg=8d tqdm requests pillow==3.1.1 urllib3 numpy cryptography scipy
- pip install opencv-python==3.4.0.12 cryptography==2.1.4
+ conda install jpeg tqdm requests pillow urllib3 numpy cryptography scipy
+ pip install opencv-python==3.4.2.17 cryptography==2.1.4
  ```
- * Install 7zip (On Ubuntu)
+* Install 7zip (On Ubuntu)
  ```
  sudo apt-get install p7zip-full
  ```

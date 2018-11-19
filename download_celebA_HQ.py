@@ -93,4 +93,4 @@ if __name__ == '__main__':
         with zipfile.ZipFile(save_path) as zf:
             zip_dir = zf.namelist()[0]
             zf.extractall(global_data_dir)
-        os.remove(save_path)
+        # os.remove(save_path)

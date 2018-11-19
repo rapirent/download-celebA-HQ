@@ -38,7 +38,7 @@ def download(url, target_dir, filename=None):
     if filename is None:
         filename = url_filename(url)
     filepath = os.path.join(target_dir, filename)
-    urlretrieve(url, filepath)
+    # urlretrieve(url, filepath)
     return filepath
 
 
@@ -112,18 +112,18 @@ def download_celabA(dataset_dir):
     img_dir_align = os.path.join(dataset_dir, 'Img', 'img_align_celeba')
     img_dir = os.path.join(dataset_dir, 'Img', 'img_celeba')
 
-    url, sha1 = _ALIGNED_IMGS_URL
-    print('Downloading {}'.format(url))
-    filepath = download(url, dataset_dir)
-    print('Done!')
-    print('Check SHA1 {}'.format(filepath))
-    if sha1 != checksum(filepath, 'sha1'):
-        raise RuntimeError('Checksum mismatch for %s.' % url)
+    # url, sha1 = _ALIGNED_IMGS_URL
+    # print('Downloading {}'.format(url))
+    # filepath = download(url, dataset_dir)
+    # print('Done!')
+    # print('Check SHA1 {}'.format(filepath))
+    # if sha1 != checksum(filepath, 'sha1'):
+    #     raise RuntimeError('Checksum mismatch for %s.' % url)
 
-    print('Extract archive {}'.format(filepath))
-    archive_extract(filepath, os.path.join(dataset_dir, 'Img'))
-    print('Done!')
-    os.remove(filepath)
+    # print('Extract archive {}'.format(filepath))
+    # archive_extract(filepath, os.path.join(dataset_dir, 'Img'))
+    # print('Done!')
+    #os.remove(filepath)
 
     n_imgsd = sum([1 for file in os.listdir(img_dir_align) if file[-4:] == '.jpg'])
     assert (n_imgsd == n_imgs)
@@ -153,7 +153,7 @@ def download_celabA(dataset_dir):
         raise RuntimeError('Checksum mismatch for %s.' % url)
 
     url, sha1 = _IMGS_URL
-    try: 
+    try:
         print('Downloading {}'.format(url))
         filepath = download(url, dataset_dir)
         print('Done!')
@@ -203,7 +203,7 @@ def download_celabA(dataset_dir):
         if file[:14] == 'img_celeba.7z.':
             filepath = os.path.join(dataset_dir, file)
             print('Remove: {}'.format(filepath))
-            os.remove(filepath)
+           # os.remove(filepath)
 
     n_imgsd = len(glob(os.path.join(img_dir, '*.jpg')))
     assert (n_imgsd == n_imgs)
